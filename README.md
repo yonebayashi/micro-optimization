@@ -15,7 +15,7 @@ My implementation of the `atoi()` function is ~150% faster than the standard lib
 | --- | ---
 0.054168s | 0.008065s
 
-From my research, the standard library `atoi()` uses another function, called `strtol()` for string conversion. I found the implementation of `strtol()` [here](https://github.com/gcc-mirror/gcc/blob/master/libiberty/strtol.c). Based on what I know about the workload, which consists of base-10 numbers, I eliminated the branches where they check for the number base in my naive implementation. I also eliminated a lot of branches that check if the number is in a permissible range, including negative values. Reducing branches _really_ helped me achieve a faster run time.  
+From my research, the standard library `atoi()` uses another function, called `strtol()` for string conversion ([source](https://github.com/lattera/glibc/blob/master/stdlib/atoi.c)). I found the implementation of `strtol()` [here](https://github.com/gcc-mirror/gcc/blob/master/libiberty/strtol.c). Based on what I know about the workload, which consists of base-10 numbers, I eliminated the branches where they check for the number base in my naive implementation. I also eliminated a lot of branches that check if the number is in a permissible range, including negative values. Reducing branches _really_ helped me achieve a faster run time.  
 
 ## Part 2: Optimized implementation
 
